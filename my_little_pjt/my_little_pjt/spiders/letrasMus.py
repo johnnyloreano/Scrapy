@@ -1,14 +1,19 @@
 # -*- coding: utf-8 -*-
 import scrapy
-
+from scrapy import Request
 
 class LetrasmusSpider(scrapy.Spider):
     name = 'letrasMus'
     allowed_domains = ['letras.mus.br/']
-    start_urls = ['https://www.letras.mus.br/pineapple/sobre-nos-poesia-acustica-2/']
+
+    def __init__(self,artist):
+        self.start_urls = [artist]
 
     def parse(self, response):
-        return self.parse_lyric(response)
+        best_songs = response.xpath("//div[@class='artista-top g-sp g-pr']/ol/li/a/@href").extract()
+        for song in best_songs:
+            path = response.urljoin(song)
+            yield Request(path, callback = self.parse_lyric, dont_filter=True)
 
 
     def parse_lyric(self, response):
