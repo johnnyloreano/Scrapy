@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for my_little_pjt project
+# Scrapy settings for wiki project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,17 +9,18 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'my_little_pjt'
+BOT_NAME = 'wiki'
 
-SPIDER_MODULES = ['my_little_pjt.spiders']
-NEWSPIDER_MODULE = 'my_little_pjt.spiders'
+SPIDER_MODULES = ['wiki.spiders']
+NEWSPIDER_MODULE = 'wiki.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'my_little_pjt (+http://www.yourdomain.com)'
+#USER_AGENT = 'wiki (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
+
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -47,13 +48,13 @@ ROBOTSTXT_OBEY = False
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'my_little_pjt.middlewares.MyLittlePjtSpiderMiddleware': 543,
+#    'wiki.middlewares.WikiSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'my_little_pjt.middlewares.MyLittlePjtDownloaderMiddleware': 543,
+#    'wiki.middlewares.WikiDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -65,7 +66,8 @@ ROBOTSTXT_OBEY = False
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    # 'my_little_pjt.pipelines.MyLittlePjtPipeline': 300,
+    # 'wiki.pipelines.WikiPipeline': 300,
+    'scrapy.pipelines.images.ImagesPipeline': 1
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
